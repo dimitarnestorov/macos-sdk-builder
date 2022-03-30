@@ -41,7 +41,9 @@ jobs:
         python-version: '3.9.5'
     - name: Install blacktop/ipsw
       run: |
-        brew install blacktop/tap/ipsw
+        curl https://github.com/blacktop/ipsw/releases/download/v3.1.91/ipsw_3.1.91_macOS_x86_64.tar.gz --output ipsw.tar.gz --location
+        tar -xzvf ipsw.tar.gz
+        sudo mv ipsw /usr/local/bin
     - name: Downloading IPSW
       run: |
         ipsw download ipsw --version ${{ matrix.version }} --device iPhone10,3
